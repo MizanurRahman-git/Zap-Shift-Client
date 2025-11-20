@@ -8,11 +8,11 @@ const Navbar = () => {
 
   const handleLogOut = () => {
     logOut()
-    .then()
-    .catch(error => {
-      console.log(error)
-    })
-  }
+      .then()
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const links = (
     <>
@@ -21,6 +21,9 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink>About Us</NavLink>
+      </li>
+      <li>
+        <NavLink to='/sendparcel'>Send Parcel </NavLink>
       </li>
       <li>
         <NavLink to="/coverage">Coverage</NavLink>
@@ -64,8 +67,21 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end ">
-        {user ? <a onClick={handleLogOut} className="btn">Log Out</a> : <Link to='/login' className="btn">Log In</Link>}
-        <Link to='/rider' className="btn btn-primary text-black mx-4 border-none">Be A Rider</Link>
+        {user ? (
+          <a onClick={handleLogOut} className="btn">
+            Log Out
+          </a>
+        ) : (
+          <Link to="/login" className="btn">
+            Log In
+          </Link>
+        )}
+        <Link
+          to="/rider"
+          className="btn btn-primary text-black mx-4 border-none"
+        >
+          Be A Rider
+        </Link>
       </div>
     </div>
   );
