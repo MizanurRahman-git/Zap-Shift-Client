@@ -4,9 +4,9 @@ import { Navigate, useLocation } from 'react-router';
 
 const PrivateRoute = ({children}) => {
     const location = useLocation()
-    const {user, Loading} = useAuth()
+    const {user, loading} = useAuth()
 
-    if(Loading){
+    if(loading){
         return <span className="loading loading-dots loading-xl"></span>
     }
 
