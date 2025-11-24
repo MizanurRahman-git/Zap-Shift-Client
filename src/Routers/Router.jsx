@@ -13,6 +13,7 @@ import MyParcels from "../pages/Dashboard/MyParcels/MyParcels";
 import Payment from "../pages/Dashboard/Payment/Payment";
 import PaymentSuccess from "../pages/Dashboard/Payment/PaymentSuccess";
 import PaymentCancelled from "../pages/Dashboard/Payment/PaymentCancelled";
+import PaymentHistory from "../pages/Dashboard/Payment/PaymentHistory";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,7 @@ const router = createBrowserRouter([
             <Rider />
           </PrivateRoute>
         ),
+        loader: () => fetch("/warehouses.json").then((res) => res.json()),
       },
       {
         path: "/sendparcel",
@@ -70,22 +72,26 @@ const router = createBrowserRouter([
     ),
     children: [
       {
-        path: '/dashboard/myparcels',
-        element: <MyParcels/>
+        path: "/dashboard/myparcels",
+        element: <MyParcels />,
       },
       {
-        path: '/dashboard/payment/:parcelid',
-        element: <Payment/>
+        path: "/dashboard/payment-history",
+        element: <PaymentHistory />,
       },
       {
-        path: '/dashboard/payment-success',
-        element: <PaymentSuccess/>
+        path: "/dashboard/payment/:parcelid",
+        element: <Payment />,
       },
       {
-        path:'/dashboard/payment-cancelled',
-        element: <PaymentCancelled/>
-      }
-    ]
+        path: "/dashboard/payment-success",
+        element: <PaymentSuccess />,
+      },
+      {
+        path: "/dashboard/payment-cancelled",
+        element: <PaymentCancelled />,
+      },
+    ],
   },
 ]);
 

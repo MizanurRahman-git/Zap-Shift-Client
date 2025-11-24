@@ -4,11 +4,13 @@ import useAuth from "../../Hooks/useAuth";
 import { Link, useLocation, useNavigate } from "react-router";
 import SocialLink from "./SocialLink";
 import axios from "axios";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const Register = () => {
 
   const location = useLocation()
   const navigate = useNavigate()
+  const axiosSecure = useAxiosSecure()
 
   const {
     register,
@@ -23,8 +25,7 @@ const Register = () => {
     const profileImage = data.image[0]
 
     registerUser(data.email, data.password)
-      .then((result) => {
-        console.log(result.user);
+      .then(() => {
         const formData = new FormData()
         formData.append('image', profileImage)
 
@@ -32,6 +33,18 @@ const Register = () => {
          
         axios.post(image_image_URL, formData)
         .then(res => {
+
+          const userInfo = {
+            email: data.email,
+            displayName:data.name,
+            photoURL:res.data.data.url
+          }
+          axiosSecure.post('/users', userInfo)
+          .then(res => {
+            if(res.data.insertedId){
+              console.log('user set on database')
+            }
+          })
 
           const userProfile = {
             displayName:data.name,

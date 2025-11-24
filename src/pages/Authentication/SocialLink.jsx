@@ -1,8 +1,10 @@
 import React from "react";
 import useAuth from "../../Hooks/useAuth";
 import { useLocation, useNavigate } from "react-router";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const SocialLink = () => {
+  const axiosSecure = useAxiosSecure();
   const location = useLocation();
   const navigate = useNavigate();
   const { signWithGoogle } = useAuth();
@@ -11,7 +13,20 @@ const SocialLink = () => {
     signWithGoogle()
       .then((result) => {
         console.log(result.user);
-        navigate(location?.state || '/')
+
+        const userInfo = {
+          email: result.user.email,
+          displayName: result.user.displayName,
+          photoURL: result.user.photoURL,
+        };
+
+        axiosSecure.post('/users', userInfo).then((res) => {
+          navigate(location?.state || "/");
+          console.log(res.data)
+          if(res.data.insertedId){
+            console.log('User has been Stored')
+          };
+        });
       })
       .catch((error) => {
         console.log(error);

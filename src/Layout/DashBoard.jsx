@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, NavLink, Outlet } from "react-router";
 import { CiDeliveryTruck } from "react-icons/ci";
+import { FaHistory } from "react-icons/fa";
 
 
 const DashBoard = () => {
@@ -82,6 +83,17 @@ const DashBoard = () => {
                 <CiDeliveryTruck />
 
                 <span className="is-drawer-close:hidden">My Parcel</span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/dashboard/payment-history"
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="Payment History"
+              >
+                <FaHistory />
+
+                <span className="is-drawer-close:hidden">Payment History</span>
               </NavLink>
             </li>
 
