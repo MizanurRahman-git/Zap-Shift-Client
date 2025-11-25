@@ -14,6 +14,8 @@ import Payment from "../pages/Dashboard/Payment/Payment";
 import PaymentSuccess from "../pages/Dashboard/Payment/PaymentSuccess";
 import PaymentCancelled from "../pages/Dashboard/Payment/PaymentCancelled";
 import PaymentHistory from "../pages/Dashboard/Payment/PaymentHistory";
+import ApproveRiders from "../pages/Dashboard/ApproveRiders/ApproveRiders";
+import UserManagement from "../pages/Dashboard/UserManagement/UserManagement";
 
 const router = createBrowserRouter([
   {
@@ -76,8 +78,16 @@ const router = createBrowserRouter([
         element: <MyParcels />,
       },
       {
+        path:'/dashboard/user-management',
+        element: <UserManagement/>
+      },
+      {
         path: "/dashboard/payment-history",
         element: <PaymentHistory />,
+      },
+      {
+        path: '/dashboard/approve-riders',
+        element: <ApproveRiders/>
       },
       {
         path: "/dashboard/payment/:parcelid",
