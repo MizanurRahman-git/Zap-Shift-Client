@@ -16,6 +16,7 @@ import PaymentCancelled from "../pages/Dashboard/Payment/PaymentCancelled";
 import PaymentHistory from "../pages/Dashboard/Payment/PaymentHistory";
 import ApproveRiders from "../pages/Dashboard/ApproveRiders/ApproveRiders";
 import UserManagement from "../pages/Dashboard/UserManagement/UserManagement";
+import AdminRoute from "./AdminRoute";
 
 const router = createBrowserRouter([
   {
@@ -79,7 +80,7 @@ const router = createBrowserRouter([
       },
       {
         path:'/dashboard/user-management',
-        element: <UserManagement/>
+        element: <AdminRoute><UserManagement/></AdminRoute> 
       },
       {
         path: "/dashboard/payment-history",
@@ -87,7 +88,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/dashboard/approve-riders',
-        element: <ApproveRiders/>
+        element: <AdminRoute><ApproveRiders/></AdminRoute> 
       },
       {
         path: "/dashboard/payment/:parcelid",
