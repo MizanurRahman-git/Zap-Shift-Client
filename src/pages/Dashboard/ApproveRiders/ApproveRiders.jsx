@@ -17,8 +17,8 @@ const ApproveRiders = () => {
     },
   });
 
-  const handleStatus = (id, status, email) => {
-    const updateInfo = { status: status, email: email };
+  const handleStatus = (id, status, workStatus, email) => {
+    const updateInfo = { status: status,workStatus: workStatus, email: email };
 
     axiosSecure.patch(`/riders/${id}`, updateInfo).then((res) => {
       if (res.data.modifiedCount) {
@@ -45,7 +45,7 @@ const ApproveRiders = () => {
       confirmButtonText: "Approve!",
     }).then((result) => {
       if (result.isConfirmed) {
-        handleStatus(id, "Approved", email);
+        handleStatus(id, "Approved", "Available", email);
       }
     });
   };
@@ -79,7 +79,8 @@ const ApproveRiders = () => {
               <th>Name</th>
               <th>Email</th>
               <th>Distrct</th>
-              <th>Status</th>
+              <th>Application Status</th>
+              <th>Work Status</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -101,6 +102,7 @@ const ApproveRiders = () => {
                 >
                   {rider.status}
                 </td>
+                <td>{rider.workStatus}</td>
                 <td>
                   <button
                     onClick={() => handleApproval(rider._id, rider.rideremail)}

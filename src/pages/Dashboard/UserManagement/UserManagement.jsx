@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import React, { useState } from "react";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { FaUserShield } from "react-icons/fa";
 import { FiShieldOff } from "react-icons/fi";
@@ -7,19 +7,19 @@ import Swal from "sweetalert2";
 
 const UserManagement = () => {
   const axiosSecure = useAxiosSecure();
+  const [searchText, setSearchText] = useState("");
 
   const { data: users = [], refetch } = useQuery({
-    queryKey: ["users"],
+    queryKey: ["users", searchText],
     queryFn: async () => {
-      const res = await axiosSecure.get("/users");
+      const res = await axiosSecure.get(`/users?searchText=${searchText}`);
       return res.data;
     },
   });
 
-
   const handleMakeAdmin = (id, name) => {
     const updateRole = { role: "admin" };
-    axiosSecure.patch(`/users/${id}`, updateRole).then((res) => {
+    axiosSecure.patch(`/users/${id}/role`, updateRole).then((res) => {
       if (res.data.modifiedCount) {
         refetch();
         Swal.fire({
@@ -33,11 +33,9 @@ const UserManagement = () => {
     });
   };
 
-
-
   const handleMakeUser = (id, name) => {
     const updateRole = { role: "user" };
-    axiosSecure.patch(`/users/${id}`, updateRole).then((res) => {
+    axiosSecure.patch(`/users/${id}/role`, updateRole).then((res) => {
       if (res.data.modifiedCount) {
         refetch();
         Swal.fire({
@@ -50,15 +48,42 @@ const UserManagement = () => {
       }
     });
   };
+
   return (
     <div>
       <h2 className="font-bold text-3xl">User Management: {users.length}</h2>
+      <div className="flex justify-center">
+        <label className="input my-2">
+          <svg
+            className="h-[1em] opacity-50"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+          >
+            <g
+              strokeLinejoin="round"
+              strokeLinecap="round"
+              strokeWidth="2.5"
+              fill="none"
+              stroke="currentColor"
+            >
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.3-4.3"></path>
+            </g>
+          </svg>
+          <input
+            onChange={(e) => setSearchText(e.target.value)}
+            type="search"
+            required
+            placeholder="Search User"
+          />
+        </label>
+      </div>
       <div className="overflow-x-auto">
         <table className="table table-zebra">
           {/* head */}
           <thead>
             <tr>
-              <th>Sl No.</th>
+              <th>SL No.</th>
               <th>User</th>
               <th>Email</th>
               <th>Role</th>
@@ -82,12 +107,17 @@ const UserManagement = () => {
                 <td>{user.role}</td>
                 <td>
                   {user.role === "admin" ? (
-                    <button onClick={()=> handleMakeUser(user._id, user.displayName)} className="btn bg-red-500">
+                    <button
+                      onClick={() => handleMakeUser(user._id, user.displayName)}
+                      className="btn bg-red-500"
+                    >
                       <FiShieldOff />
                     </button>
                   ) : (
                     <button
-                      onClick={() => handleMakeAdmin(user._id, user.displayName)}
+                      onClick={() =>
+                        handleMakeAdmin(user._id, user.displayName)
+                      }
                       className="btn bg-green-500"
                     >
                       <FaUserShield />

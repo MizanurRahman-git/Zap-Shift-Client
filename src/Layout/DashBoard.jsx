@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, NavLink, Outlet } from "react-router";
 import { CiDeliveryTruck } from "react-icons/ci";
+import { RiEBikeFill } from "react-icons/ri";
 import { FaHistory, FaMotorcycle, FaUser } from "react-icons/fa";
 import useRole from "../Hooks/useRole";
 
@@ -97,7 +98,8 @@ const DashBoard = () => {
                 <span className="is-drawer-close:hidden">Payment History</span>
               </NavLink>
             </li>
-            { role === "admin" && <>
+            {role === "admin" && (
+              <>
                 <li>
                   <NavLink
                     to="/dashboard/approve-riders"
@@ -108,6 +110,19 @@ const DashBoard = () => {
 
                     <span className="is-drawer-close:hidden">
                       Approve Riders
+                    </span>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/dashboard/assign-riders"
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="Assign Riders"
+                  >
+                    <RiEBikeFill />
+
+                    <span className="is-drawer-close:hidden">
+                      Assign Riders
                     </span>
                   </NavLink>
                 </li>
@@ -125,7 +140,7 @@ const DashBoard = () => {
                   </NavLink>
                 </li>
               </>
-            }
+            )}
 
             {/* List item */}
             <li>

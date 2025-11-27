@@ -17,6 +17,7 @@ import PaymentHistory from "../pages/Dashboard/Payment/PaymentHistory";
 import ApproveRiders from "../pages/Dashboard/ApproveRiders/ApproveRiders";
 import UserManagement from "../pages/Dashboard/UserManagement/UserManagement";
 import AdminRoute from "./AdminRoute";
+import AssignRiders from "../pages/Dashboard/AssignRiders/AssignRiders";
 
 const router = createBrowserRouter([
   {
@@ -89,6 +90,10 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/approve-riders',
         element: <AdminRoute><ApproveRiders/></AdminRoute> 
+      },
+      {
+        path: '/dashboard/assign-riders',
+        element: <AdminRoute><AssignRiders/></AdminRoute> 
       },
       {
         path: "/dashboard/payment/:parcelid",
