@@ -18,6 +18,8 @@ import ApproveRiders from "../pages/Dashboard/ApproveRiders/ApproveRiders";
 import UserManagement from "../pages/Dashboard/UserManagement/UserManagement";
 import AdminRoute from "./AdminRoute";
 import AssignRiders from "../pages/Dashboard/AssignRiders/AssignRiders";
+import AssignedDelivery from "../pages/Dashboard/AssignDelivery/AssignedDelivery";
+import RiderRoute from "./RiderRoute";
 
 const router = createBrowserRouter([
   {
@@ -94,6 +96,10 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/assign-riders',
         element: <AdminRoute><AssignRiders/></AdminRoute> 
+      },
+      {
+        path: '/dashboard/assigned-deliveres',
+        element: <RiderRoute><AssignedDelivery/></RiderRoute> 
       },
       {
         path: "/dashboard/payment/:parcelid",

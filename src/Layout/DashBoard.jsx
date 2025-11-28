@@ -4,6 +4,7 @@ import { CiDeliveryTruck } from "react-icons/ci";
 import { RiEBikeFill } from "react-icons/ri";
 import { FaHistory, FaMotorcycle, FaUser } from "react-icons/fa";
 import useRole from "../Hooks/useRole";
+import { TbTruckDelivery } from "react-icons/tb";
 
 const DashBoard = () => {
   const { role } = useRole();
@@ -98,6 +99,23 @@ const DashBoard = () => {
                 <span className="is-drawer-close:hidden">Payment History</span>
               </NavLink>
             </li>
+            {role === "Rider" && (
+              <>
+                <li>
+                  <NavLink
+                    to="/dashboard/assigned-deliveres"
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="Assigned Deliveres"
+                  >
+                    <TbTruckDelivery />
+
+                    <span className="is-drawer-close:hidden">
+                      Assigned Deliveres
+                    </span>
+                  </NavLink>
+                </li>
+              </>
+            )}
             {role === "admin" && (
               <>
                 <li>

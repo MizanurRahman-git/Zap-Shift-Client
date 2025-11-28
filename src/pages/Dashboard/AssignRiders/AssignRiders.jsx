@@ -89,7 +89,7 @@ const AssignRiders = () => {
                     onClick={() => handleModal(parcel)}
                     className="btn btn-primary text-black"
                   >
-                    Assign Rider
+                    Find Rider
                   </button>
                 </td>
               </tr>
