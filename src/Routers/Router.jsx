@@ -20,6 +20,8 @@ import AdminRoute from "./AdminRoute";
 import AssignRiders from "../pages/Dashboard/AssignRiders/AssignRiders";
 import AssignedDelivery from "../pages/Dashboard/AssignDelivery/AssignedDelivery";
 import RiderRoute from "./RiderRoute";
+import CompletedDeliveres from "../pages/Dashboard/CompletedDeliveres/CompletedDeliveres";
+import ParcelTrack from "../pages/Dashboard/ParcelTrack/ParcelTrack";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +49,10 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: () => fetch("/warehouses.json").then((res) => res.json()),
+      },
+      {
+        path: '/parceltrack/:trackingId',
+        element: <ParcelTrack/>
       },
       {
         path: "/coverage",
@@ -100,6 +106,10 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/assigned-deliveres',
         element: <RiderRoute><AssignedDelivery/></RiderRoute> 
+      },
+      {
+        path: '/dashboard/completed-deliveres',
+        element: <RiderRoute><CompletedDeliveres/></RiderRoute> 
       },
       {
         path: "/dashboard/payment/:parcelid",

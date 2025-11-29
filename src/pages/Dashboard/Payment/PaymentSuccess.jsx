@@ -18,8 +18,6 @@ const PaymentSuccess = () => {
                     transactionId: res.data.transactionId,
                     trackingId: res.data .trackingId
                 })
-
-                console.log(res.data)
             })
         }
     },[sessionId, axiosSecure])
