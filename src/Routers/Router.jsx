@@ -22,6 +22,7 @@ import AssignedDelivery from "../pages/Dashboard/AssignDelivery/AssignedDelivery
 import RiderRoute from "./RiderRoute";
 import CompletedDeliveres from "../pages/Dashboard/CompletedDeliveres/CompletedDeliveres";
 import ParcelTrack from "../pages/Dashboard/ParcelTrack/ParcelTrack";
+import DashboardHome from "../pages/Dashboard/DashboardHome/DashboardHome";
 
 const router = createBrowserRouter([
   {
@@ -83,6 +84,10 @@ const router = createBrowserRouter([
       </PrivateRoute>
     ),
     children: [
+      {
+        path: '/dashboard/home',
+        element: <DashboardHome/>
+      },
       {
         path: "/dashboard/myparcels",
         element: <MyParcels />,
