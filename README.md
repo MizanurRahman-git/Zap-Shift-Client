@@ -1,16 +1,24 @@
-# React + Vite
+Zap Shift — Smart & Reliable Parcel Management Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Zap Shift is a modern web-based parcel management platform designed to make sending and receiving parcels seamless, secure, and efficient. The system supports three core roles — User, Rider, and Admin, each with dedicated access control and responsibilities, ensuring a fully streamlined workflow from request to delivery.
 
-Currently, two official plugins are available:
+With Zap Shift, any registered user can send parcels to any location while staying updated throughout the entire delivery process. Upon creating a delivery request, an available Rider within the sender’s area is assigned to collect the parcel and ensure timely delivery to the destination. Delivery charges are calculated dynamically based on destination and distance, where Riders earn 60% of the parcel fee, and Admins receive 40% — ensuring a fair and transparent earning structure.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The Admin dashboard provides complete operational visibility, allowing administrators to monitor rider availability, track parcel movement, verify delivery status, and maintain system-wide activity logs. Zap Shift features robust authentication, authorization, and data validation, ensuring only verified users can access the platform and perform actions according to their role.
 
-## React Compiler
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Key Features:
 
-## Expanding the ESLint configuration
+Role-based system: User, Rider & Admin
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Send & receive parcels to any location after login
+
+Real-time parcel collection & delivery management
+
+Dynamic cost calculation based on distance & address
+
+Automated earning distribution (Rider 60% | Admin 40%)
+
+Admin monitoring for riders, parcels, delivery flow & service areas
+
+Secure Authentication, Authorization & Data Validation
