@@ -3,7 +3,7 @@ import React from 'react';
 
 
 const axiosIntance = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: "https://zap-shift-server-sigma-three.vercel.app",
 });
 
 const useAxios = () => {
